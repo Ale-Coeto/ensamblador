@@ -1,0 +1,55 @@
+﻿/ Comparar 3 nums
+ORG 100
+
+/Input de los números
+input 
+store A
+
+input 
+store B
+
+input 
+store C
+
+load A
+subt B
+
+/ Checar si A > B
+Skipcond 800 /Si A-B es positivo (A>B)
+jump Segundo / Si no, checar si B > C
+jump Primero / Si si, checar si A > C
+halt
+
+/ Checar si A > C
+Primero, load A
+subt C
+
+Skipcond 800 / Si A-C es positivo (A > C)
+jump Segundo / Si no, checar si B > C
+jump OUTA / Si si, imprimir A
+
+/ Checar si B > C
+Segundo, load B
+subt C
+
+Skipcond 800 /Si B-C es positivo (B>C)
+jump OUTC / Si no, imprimir C
+jump OUTB / Si si, imprimir B
+
+/ Output de los posibles resultados
+OUTA, Load A
+output
+halt
+
+OUTC, Load C
+output
+halt
+
+OUTB, Load B
+output
+halt
+
+/Etiquetas
+A, Dec 0
+B, Dec 0
+C, Dec 0
