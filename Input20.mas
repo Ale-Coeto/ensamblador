@@ -1,0 +1,24 @@
+﻿ORG 100
+
+/Loop para recibir input
+LOOP, Input
+StoreI C
+
+/Agregar uno al "índice"
+Load C
+Add ONE
+Store C
+
+/Restarle 20
+subt LIMIT
+
+/Checar si es igual a 0 (cuando C sea 20)
+Skipcond 400
+jump LOOP /Si no es positivo, repetir
+
+/Detener programa cuando se reciban 20 datos
+Halt
+
+C, dec 0
+ONE, dec 1
+LIMIT, dec 20
