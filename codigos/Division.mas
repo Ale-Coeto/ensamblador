@@ -1,0 +1,42 @@
+﻿/División
+ORG 100
+
+input 
+Store X
+
+input 
+Store Y
+
+Divide, Load C
+add D
+Store C
+
+Load X
+subt Y
+
+Store X
+
+Skipcond 800 / Si x/y es positivo
+jump Result
+jump Divide
+
+
+Result, load X
+Skipcond 400
+jump Residuo
+jump Exact
+
+Residuo, load C
+subt D
+output
+halt
+
+Exact, load C
+Output
+halt
+
+
+X, dec 0
+Y, dec 0
+C, dec 0
+D, dec 1

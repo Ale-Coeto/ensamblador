@@ -1,0 +1,23 @@
+/While
+ORG 100
+
+input
+Store H
+jump OUT
+
+Loop, Load H
+add U
+Store H
+OUT, output
+
+Check, Load N
+subt H
+Skipcond 800 /Si 10-H es positivo (H < 10)
+jump Result
+jump Loop
+
+Result, halt
+
+H, dec 0
+N, dec 10
+U, dec 1
