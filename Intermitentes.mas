@@ -1,0 +1,123 @@
+﻿ORG 100
+/Loop para recibir input
+LOOP, Input
+StoreI C
+
+/ Analizar los datos
+/ Checar si el dato es = 0
+LoadI C
+Skipcond 400
+jump COMPAREB / Si no, checar si es 3
+
+/ Si si, checar si el prev = 0
+load Prev
+subt Three
+
+
+Skipcond 400
+jump RESET / Si no, seguir recibiendo
+jump PosIntermitentes / Si si, counter++
+
+
+/ Checar si el dato actual es 3
+COMPAREB, LoadI C
+subt Three
+
+Skipcond 400
+jump RESET / Si no, seguir recibiendo
+
+/ Si si, checar si el previo era 0
+load Prev
+Skipcond 400
+jump RESET / Si no, seguir recibiendo
+jump PosIntermitentes
+
+/ Sumar al counter
+PosIntermitentes, Load Counter
+add ONE
+Store Counter
+
+/ Checar si ya alcanzó el min para ser considerado como intermitentes
+subt Min
+
+Skipcond 800
+jump FINISH / Si no, seguir leyendo
+
+/ Imprimir intermitentes
+PRINT, LoadI start
+output 
+
+Load start
+add ONE
+Store start
+
+Load CountP
+add ONE
+store CountP
+
+subt size
+Skipcond 400
+jump PRINT
+
+Load marker
+Store start
+
+Load Zero
+Store CountP
+jump FINISH
+
+
+RESET, Load Zero
+Store Counter
+
+
+/ Agregar uno al "índice" y actualizar el prev
+FINISH, LoadI C
+Store Prev
+
+Load C
+Add ONE
+Store C
+
+/Restarle 20
+subt LIMIT
+
+/Checar si es igual a 0 (cuando C sea 20)
+Skipcond 400
+jump LOOP /Si no es positivo, repetir
+
+/Cuando se reciban 20 datos
+Load Reset
+Store C
+jump LOOP
+
+C, Hex 0
+ONE, dec 1
+LIMIT, dec 20
+Reset, dec 0
+Counter, dec 0
+Prev, dec 0
+Three, dec 3
+Zero, dec 0
+
+Min, dec 2
+size, dec 14
+marker, Hex 142
+start, Hex 142
+CountP, dec 0
+
+
+i, dec 73
+n, dec 110
+t, dec 116
+e, dec 101
+r, dec 114
+m, dec 109
+i2, dec 105
+t2, dec 116
+e2, dec 101
+n2, dec 110
+t3, dec 116
+e3, dec 101
+s, dec 18
+salto, dec 10
