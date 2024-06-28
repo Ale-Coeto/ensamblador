@@ -1,5 +1,5 @@
 # Ensamblador
-Códigos usando ensamblador en MARIE JS
+Códigos usando ensamblador en MARIE JS y Raquet
 
 # Proyecto Final
 - Código para la detección de luces usando micro-python en la cámara OPEN-MV
